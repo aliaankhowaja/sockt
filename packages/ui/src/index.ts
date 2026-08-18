@@ -9,7 +9,7 @@ Bun.serve({
     "/api/config": {
       GET: () =>
         Response.json({
-          orchUrl: process.env.ORCH_URL ?? "http://localhost:3000",
+          orchUrl: process.env.ORCH_URL ?? "http://localhost:3100",
           tenantId: process.env.TENANT_ID ?? "default",
         }),
     },

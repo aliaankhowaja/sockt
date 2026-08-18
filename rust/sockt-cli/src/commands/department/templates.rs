@@ -118,21 +118,72 @@ const ENGOPS_TEMPLATE: DepartmentTemplate = DepartmentTemplate {
     optional_integrations: &["pagerduty", "datadog"],
 };
 
+const CONTENT_TEMPLATE: DepartmentTemplate = DepartmentTemplate {
+    id: "content",
+    display_name: "Content",
+    description: "Plan content calendars, write X/LinkedIn/YouTube posts, generate AI video, and publish after Slack approval",
+    agents: &[
+        AgentSpec {
+            name: "Content Strategist",
+            role: "Plans content campaigns and decomposes them into writing, video, and publishing tasks",
+            description: "Architect agent that breaks content goals into ordered tasks for specialist workers",
+            tools: &["create_task"],
+            schedule: "on-demand",
+            hitl: "auto-execute (Tier 1)",
+        },
+        AgentSpec {
+            name: "Social Media Writer",
+            role: "Writes X threads, LinkedIn posts, and content calendars",
+            description: "Worker: x-thread-writer, linkedin-post-writer, content-calendar, content-repurposing skills",
+            tools: &["web_search", "read_file", "write_file", "http_request"],
+            schedule: "on-demand",
+            hitl: "auto-execute (Tier 1)",
+        },
+        AgentSpec {
+            name: "Video Script Writer",
+            role: "Writes YouTube and TikTok/Reels scripts",
+            description: "Worker: youtube-script-writer skill with PSSP structure and pattern interrupts",
+            tools: &["web_search", "read_file", "write_file", "http_request"],
+            schedule: "on-demand",
+            hitl: "auto-execute (Tier 1)",
+        },
+        AgentSpec {
+            name: "Video Creator",
+            role: "Generates AI video clips, stitches them, and routes for approval",
+            description: "Worker: video-creator skill — LTX draft → Kling final → Shotstack stitch → HITL",
+            tools: &["web_search", "read_file", "write_file", "http_request", "post_to_slack", "request_approval"],
+            schedule: "on-demand",
+            hitl: "all video outputs require approval before publish (Tier 2)",
+        },
+        AgentSpec {
+            name: "Content Publisher",
+            role: "Submits drafts for Slack approval and publishes to platform APIs",
+            description: "Worker: slack-approval-publisher skill — HITL gate then publish to X/LinkedIn/YouTube",
+            tools: &["read_file", "write_file", "post_to_slack", "request_approval", "http_request"],
+            schedule: "on-demand",
+            hitl: "all publishes require approval (Tier 2)",
+        },
+    ],
+    required_integrations: &["slack"],
+    optional_integrations: &["twitter", "linkedin", "youtube", "tiktok"],
+};
+
 pub fn get_template(name: &str) -> Option<&'static DepartmentTemplate> {
     match name {
-        "growth" => Some(&GROWTH_TEMPLATE),
-        "product" => Some(&PRODUCT_TEMPLATE),
-        "engops" => Some(&ENGOPS_TEMPLATE),
+        "growth"   => Some(&GROWTH_TEMPLATE),
+        "product"  => Some(&PRODUCT_TEMPLATE),
+        "engops"   => Some(&ENGOPS_TEMPLATE),
+        "content"  => Some(&CONTENT_TEMPLATE),
         _ => None,
     }
 }
 
 pub fn all_templates() -> &'static [&'static DepartmentTemplate] {
-    &[&GROWTH_TEMPLATE, &PRODUCT_TEMPLATE, &ENGOPS_TEMPLATE]
+    &[&GROWTH_TEMPLATE, &PRODUCT_TEMPLATE, &ENGOPS_TEMPLATE, &CONTENT_TEMPLATE]
 }
 
 pub fn template_names() -> &'static [&'static str] {
-    &["growth", "product", "engops"]
+    &["growth", "product", "engops", "content"]
 }
 
 #[cfg(test)]
@@ -147,7 +198,7 @@ mod tests {
     #[test]
     fn test_all_templates_parseable() {
         let templates = all_templates();
-        assert_eq!(templates.len(), 3);
+        assert_eq!(templates.len(), 4);
     }
 
     #[test]
@@ -156,6 +207,7 @@ mod tests {
         assert!(names.contains(&"growth"));
         assert!(names.contains(&"product"));
         assert!(names.contains(&"engops"));
+        assert!(names.contains(&"content"));
     }
 
     #[test]
@@ -163,6 +215,12 @@ mod tests {
         assert!(get_template("growth").is_some());
         assert!(get_template("product").is_some());
         assert!(get_template("engops").is_some());
+        assert!(get_template("content").is_some());
         assert!(get_template("invalid").is_none());
+    }
+
+    #[test]
+    fn test_content_template_has_five_agents() {
+        assert_eq!(CONTENT_TEMPLATE.agents.len(), 5);
     }
 }

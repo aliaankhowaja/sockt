@@ -46,5 +46,8 @@ undefined/
 # Runtime scratch
 .sockt/
 
+# Playwright test profile — contains browser session data and cached credentials
+demo/
+
 # Eval trace output — may contain real Slack message content (see evals/README.md)
 evals/traces/

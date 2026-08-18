@@ -8,10 +8,11 @@ best practices from scratch on every task.
 ## Built-in Departments
 
 | Department | Architect | Workers | Use case |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `growth` | Growth Architect | Lead Researcher, Outbound Writer | Find and qualify leads, draft outreach |
 | `product` | Product Architect | User Researcher, Spec Writer | Specs, roadmaps, GitHub issues |
 | `engops` | Eng-Ops Architect | Incident Triager, Deploy Worker | Incidents, runbooks, deployments |
+| `content` | Content Strategist | Social Media Writer, Video Script Writer, Video Creator, Content Publisher | X/LinkedIn/YouTube posts + AI video, Slack approval gate, publish |
 
 ```bash
 sockt department list              # see available + active departments

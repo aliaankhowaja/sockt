@@ -184,7 +184,7 @@ Local control-plane dashboard. React app served by `Bun.serve` on port 3001. Pro
 
 ```bash
 bun run ui       # start dashboard at http://localhost:3001
-bun run orch     # start orchestrator at http://localhost:3000
+bun run orch     # start orchestrator at http://localhost:3100
 ```
 
 ---

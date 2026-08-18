@@ -1,91 +1,104 @@
-# Content Department — Skill Index
+# Content Department — Skills Index
 
-Skills built for the Sockt Content Department. Customer-deployable. Platforms: X/Twitter, LinkedIn, YouTube/TikTok. Flow: Draft → Slack Approval → Publish.
+7 skills for the Content department workers. Match every task to the right skill before acting.
 
----
+| Keyword triggers | Skill | When to use |
+| --- | --- | --- |
+| thread, tweet, X, twitter, viral, hook | `x-thread-writer` | Writing X/Twitter threads or punchy multi-tweet takes |
+| linkedin, post, thought leadership, founder, carousel | `linkedin-post-writer` | LinkedIn posts, founder POV, carousel outlines |
+| youtube, tiktok, reels, video script, script | `youtube-script-writer` | YouTube or TikTok/Reels scripts |
+| calendar, schedule, pillars, cadence, plan | `content-calendar` | Weekly/monthly content planning and pillar definition |
+| repurpose, transform, blog, podcast, case study | `content-repurposing` | Converting long-form content to multi-platform posts |
+| generate video, ai video, clip, kling, shotstack | `video-creator` | AI video generation from script — LTX draft → Kling final → stitch |
+| approve, publish, submit, slack review, post | `slack-approval-publisher` | Submitting drafts for HITL approval then publishing |
 
-## Available Skills
+## Skills
 
 ### 1. `x-thread-writer`
-**When to use:** Task involves writing X/Twitter threads, topic breakdowns, or punchy multi-tweet takes
-**What it does:** 6-9 tweet thread with open-loop hook (contrarian / metric-led / failure story), numbered body tweets, proof tweet, single CTA
-**2026 framework:** Bookmarks as virality metric; links go in first reply (algorithm suppresses them in tweets)
-**Output:** `x_thread_draft.md` — hook + numbered tweets + CTA
+
+**Use when:** writing X/Twitter threads, topic breakdowns, punchy multi-tweet takes.
+
+**Workflow:** Single strongest insight → hook tweet (open loop / contrarian / metric-led / admission) → body tweets 2-8 (one idea each) → proof tweet → CTA tweet → links in first reply.
+
+**Success:** Hook withholds resolution, each tweet stands alone, one CTA, no fabricated stats.
+
+---
 
 ### 2. `linkedin-post-writer`
-**When to use:** Task involves LinkedIn posts, thought leadership, founder POV, or carousel briefs
-**What it does:** Hook-whitespace-bullets pattern post (900-1200 chars optimal) or carousel slide headlines
-**2026 framework:** White space required (1-2 sentences per paragraph); no corporate language; hashtags 3-5 max, niche-specific
-**Content mix:** 40% tactical how-tos (carousels) / 30% founder POV / 20% data / 10% polls
-**Output:** `linkedin_post_draft.md` — formatted post or carousel outline
+
+**Use when:** LinkedIn posts, thought leadership, founder POV, carousel outlines.
+
+**Workflow:** Choose format → hook (2 lines max) → radical white space body (900-1200 chars) → close → 3-5 niche hashtags.
+
+**Success:** Hook stops scroll, body scannable on mobile, 900-1200 chars.
+
+---
 
 ### 3. `youtube-script-writer`
-**When to use:** Task involves YouTube videos (8-20 min) or TikTok/Reels scripts (15-90 sec)
-**What it does:** Open-loop hook (first 3-30 seconds), PSSP body (Problem-Stakes-Solution-Proof), pattern interrupts every 60s, specific CTA
-**2026 framework:** 65% of viewers drop in first 10s; front-load value; [B-ROLL] and [ON-SCREEN TEXT] cues included
-**Output:** `video_script_draft.md` — full script with timing markers and visual direction
+
+**Use when:** YouTube videos or TikTok/Reels scripts.
+
+**Workflow:** One-sentence promise → hook (3-30s) → Problem-Stakes-Solution-Proof body → [PATTERN INTERRUPT] every 60s → CTA bridge → final CTA.
+
+**Success:** Hook resolves in 3s (TikTok) or 15s (YouTube), PSSP structure, visual cues throughout.
+
+---
 
 ### 4. `content-calendar`
-**When to use:** Task involves planning a content schedule, content pillars, or weekly/monthly posting plan
-**What it does:** Defines 3-5 content pillars, sets platform cadence (X: 1 thread/day; LinkedIn: 4-5x/week M-F; YouTube: 1/week; TikTok: 3-5/week), sources trending topics via web_search, writes individual content briefs
-**Output:** `content_calendar.md` — markdown table calendar + individual briefs
+
+**Use when:** planning weekly or monthly content schedule, defining content pillars.
+
+**Workflow:** Define 3-5 pillars → set cadence → web_search trending topics → write per-post briefs → save as markdown table.
+
+**Success:** All briefs self-contained, trending topics sourced, full period covered.
+
+---
 
 ### 5. `content-repurposing`
-**When to use:** Task involves turning one source piece (blog, podcast, case study, data report) into multi-platform content
-**What it does:** Distills source into thesis + insights, then creates platform-native pieces for X (distinct hook), LinkedIn (different angle, white space), and YouTube/TikTok (visual script) — not copy-paste
-**Output:** `x_thread_draft.md` + `linkedin_post_draft.md` + `video_script_draft.md` + `repurposing_summary.md`
 
-### 6. `slack-approval-publisher`
-**When to use:** Task involves submitting a completed draft for human approval before publishing
-**What it does:** Posts draft to Slack approval channel with full text, waits for HITL approval (24h timeout), publishes to platform API on approval, logs rejection + reason on reject
-**APIs:** Twitter API v2 (`/tweets`), LinkedIn UGC Posts API (`/ugcPosts`), YouTube Data API v3
-**Output:** Published post URL (approved) or `rejected_draft_{{task_id}}.md` (rejected)
+**Use when:** transforming a blog post, podcast, case study, or data report into multi-platform content.
+
+**Workflow:** Ingest source → extract thesis + insights → X thread (distinct hook) → LinkedIn (different angle) → TikTok script (visual) → save all outputs.
+
+**Success:** Each piece is platform-native, three distinct angles, summary documents changes.
 
 ---
 
-## Skill Selection Guide
+### 6. `video-creator`
 
-| Task keywords | Use skill |
-|---|---|
-| thread, X post, twitter, punchy take, tweet | `x-thread-writer` |
-| linkedin, carousel, thought leadership, founder post, text post | `linkedin-post-writer` |
-| youtube, tiktok, reels, video script, shorts, hook, b-roll | `youtube-script-writer` |
-| calendar, schedule, content plan, pillars, cadence, weekly plan | `content-calendar` |
-| repurpose, transform, multiple platforms, adapt, reformat | `content-repurposing` |
-| publish, post, approve, send for review, slack approval | `slack-approval-publisher` |
+**Use when:** generating AI video from a script or brief for YouTube, TikTok/Reels, or LinkedIn.
 
----
+**Workflow:** Load script → break into 3-12 clips → draft via fal.ai LTX-Video → quality review → final via Kling 3.0 → stitch via Shotstack → Slack HITL approval → publish.
 
-## 2026 Platform Cheat Sheet
+**Provider stack:**
 
-| Platform | Optimal Cadence | Peak Times | Links |
-|---|---|---|---|
-| X / Twitter | 1 thread/day + 3-5 short posts | 8-10 AM, 12-1 PM, 5-7 PM | Put in first reply, never in tweet |
-| LinkedIn | 4-5 posts/week (Mon–Fri only) | 7-9 AM, 12 PM | Put in comments |
-| YouTube | 1 video/week or bi-weekly | Thu–Sat upload for weekend peak | Description + cards |
-| TikTok/Reels | 3-5/week | 6-9 PM local | Bio link |
+- Draft: `fal-ai/ltx-video` (~$0.004-0.005/s, fast)
+- Final: Kling 3.0 via `api.klingai.com` (best motion quality)
+- Fallback: `fal-ai/seedance-v1-5` (temporal consistency)
+- Assembly: Shotstack render API
+
+**Success:** clip_manifest.json + video_output.json exist, Slack approval sent before any publish, outcome file written.
 
 ---
 
-## Sources & Star Counts
+### 7. `slack-approval-publisher`
 
-**npm packages integrated into content agent pipelines:**
-- `compromise` (12.1k ⭐) — NLP entity/hashtag extraction from drafts
-- `natural` (10.9k ⭐) — content classification and keyword scoring
-- `marked` (35k ⭐) — Markdown rendering for content pipelines
-- `remark` (8k ⭐) — AST-based Markdown transformation
-- `gray-matter` (5k ⭐) — frontmatter parsing for content files
-- `BullMQ` (6k ⭐) — scheduled publishing job queues
-- `rss-parser` (1.5k ⭐) — trend ingestion from industry feeds
-- `sentiment` (3k ⭐) — pre-publish toxicity/sentiment check
-- `cheerio` (29k ⭐) — web scraping for trend research
-- `turndown` (8k ⭐) — HTML to Markdown for repurposing
+**Use when:** submitting finished draft for human review before publishing.
 
-**Skill frameworks sourced from:**
-- `hypefury/thread-frameworks@2026` — X hook formulas (metric-led, contrarian, open loop)
-- `justin-welsh/linkedin-os@post-frameworks` — LinkedIn white-space structure
-- `dickie-bush/ship30@repurposing-framework` — single-piece → multi-platform
-- `vidIQ/content-strategy@2026` — YouTube hook science and script templates
-- `later/content-strategy@calendar-frameworks` — B2B content pillar methodology
-- `MMEHDI0606/ai-agent-foundation-template@content-ops` — Sockt internal
-- `charlie947/social-media-skills@hook-generator` + `@post-writer` (Claude Code marketplace)
+**Workflow:** Read draft → post_to_slack (full draft in code block + task_id) → request_approval (24h HITL) → on approved: publish via platform API → on rejected: log + notify.
+
+**Success:** Slack notified before HITL request, both approve/reject paths handled, no silent failures.
+
+---
+
+## Sources
+
+Skills compiled from:
+
+- `vercel/ai@experimental_generateVideo` (38K stars) — video generation provider interface
+- `fal-ai-community/video-starter-kit` (2.4K stars) — video pipeline patterns
+- `remotion-dev/remotion` (43.5K stars) — video assembly reference
+- `vargHQ/sdk` (2026) — JSX-for-videos declarative composition pattern
+- `charlie947/social-media-skills` — X thread hook frameworks, LinkedIn white space pattern
+- `coreyhaines31/marketingskills` — content calendar cadence, repurposing workflow
+- Influencer strategy research (2026): MrBeast hook science, LinkedIn algorithm, TikTok 6-9 PM window
